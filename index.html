@@ -3,42 +3,65 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DApp 主页 v0.37</title>
+<title>主页 - RongChain DApp</title>
 <link rel="stylesheet" href="css/style.css">
+<script src="js/main.js" defer></script>
 </head>
 <body>
 
-<!-- 顶部 -->
-<div class="topbar">
-    <div class="left-wrap">
-        <div class="logo-bg">
-            <img class="logo-img" src="https://raw.githubusercontent.com/FFAI888/55555555/main/img/0E0CB292-E014-42D1-B11B-5B04BCA492F3.jpeg" alt="logo">
-        </div>
-        <div class="title-wrap">
-            <div class="app-title">融 链</div>
-            <div class="logo-subtext">RongChain</div>
+<header class="app-header">
+    <div class="logo-wrap">
+        <img class="logo-img" src="https://raw.githubusercontent.com/FFAI888/55555555/main/img/0E0CB292-E014-42D1-B11B-5B04BCA492F3.jpeg" alt="logo">
+        <div class="logo-text">
+            <div class="cn-text">融 链</div>
+            <div class="en-text">RongChain</div>
         </div>
     </div>
-    <div class="wallet-top" id="walletTop" title="点击复制钱包地址"></div>
-</div>
+    <div class="wallet-address" id="walletAddress">未连接</div>
+</header>
 
-<!-- 主体 -->
-<div class="main-wrap">
-    <div class="content" id="mainContent">
-        <h2>欢迎来到 DApp 主页！</h2>
-        <div class="wallet-address" id="walletAddress">加载钱包地址...</div>
-    </div>
-</div>
+<main id="mainContent">
+    <h2>欢迎来到主页</h2>
+    <p>这是 DApp 的主要功能页面。</p>
+</main>
 
-<!-- 底部导航 -->
-<div class="bottom-nav" id="bottomNav">
-    <button id="homeBtn" class="active"><img src="https://img.icons8.com/fluency/48/000000/home.png" alt="首页">首页</button>
-    <button id="groupBtn"><img src="https://img.icons8.com/fluency/48/000000/conference.png" alt="拼团">拼团</button>
-    <button id="earnBtn"><img src="https://img.icons8.com/fluency/48/000000/coin-in-hand.png" alt="赚币">赚币</button>
-    <button id="swapBtn"><img src="https://img.icons8.com/fluency/48/000000/exchange.png" alt="兑换">兑换</button>
-    <button id="profileBtn"><img src="https://img.icons8.com/fluency/48/000000/user-male-circle.png" alt="我的">我的</button>
-</div>
+<nav class="bottom-nav">
+    <a href="#" class="active" data-page="home">
+        <span class="icon">🏠</span>
+        <span>首页</span>
+    </a>
+    <a href="#" data-page="group">
+        <span class="icon">👥</span>
+        <span>拼团</span>
+    </a>
+    <a href="#" data-page="earn">
+        <span class="icon">💰</span>
+        <span>赚币</span>
+    </a>
+    <a href="#" data-page="swap">
+        <span class="icon">🔄</span>
+        <span>兑换</span>
+    </a>
+    <a href="#" data-page="profile">
+        <span class="icon">👤</span>
+        <span>我的</span>
+    </a>
+</nav>
 
-<script src="js/main.js"></script>
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const account = urlParams.get('account');
+
+// 没有登录 → 跳转回登录
+if (!account) {
+    window.location.href = "login.html";
+}
+
+const walletDisplay = document.getElementById("walletAddress");
+if (walletDisplay) {
+    walletDisplay.innerText = account;
+}
+</script>
+
 </body>
 </html>
