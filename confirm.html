@@ -1,1 +1,72 @@
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>确认关系 - RongChain DApp</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.confirm-container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:linear-gradient(135deg,#fff3e6,#ffe6cc);
+    padding:20px;
+    box-sizing:border-box;
+}
+.confirm-box{
+    background:#fff;
+    padding:30px 20px;
+    border-radius:12px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.1);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+    max-width:360px;
+    text-align:center;
+}
+.confirm-box h2{margin:0 0 15px 0;color:#333;}
+.confirm-box p{font-size:14px;color:#555;margin-bottom:25px;}
+.confirm-box button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#4CAF50;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.2s;
+}
+.confirm-box button:hover{background:#45a049;}
+</style>
+</head>
+<body>
+
+<div class="confirm-container">
+    <div class="confirm-box">
+        <h2>确认关系</h2>
+        <p id="walletInfo">钱包地址: </p>
+        <p>是否确认此操作/关系？</p>
+        <button id="confirmBtn">确认</button>
+    </div>
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const account = urlParams.get('account') || '未获取到钱包地址';
+document.getElementById('walletInfo').innerText = "钱包地址: " + account;
+
+document.getElementById('confirmBtn').addEventListener('click',()=>{
+    alert("操作已确认！");
+    // 确认后返回主页，同时传递钱包地址
+    window.location.href = `index.html?account=${encodeURIComponent(account)}`;
+});
+</script>
+
+</body>
+</html>
