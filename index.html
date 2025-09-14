@@ -48,20 +48,5 @@
     </a>
 </nav>
 
-<script>
-const urlParams = new URLSearchParams(window.location.search);
-const account = urlParams.get('account');
-
-// 没有登录 → 跳转回登录
-if (!account) {
-    window.location.href = "login.html";
-}
-
-const walletDisplay = document.getElementById("walletAddress");
-if (walletDisplay) {
-    walletDisplay.innerText = account;
-}
-</script>
-
 </body>
 </html>
