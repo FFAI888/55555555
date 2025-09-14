@@ -11,7 +11,8 @@
 <div class="topbar">
     <div class="left-wrap">
         <div class="logo-bg">
-            <img class="logo-img" src="img/0E0CB292-E014-42D1-B11B-5B04BCA492F3.jpeg" alt="logo">
+            <img class="logo-img" id="logoImg" src="img/0E0CB292-E014-42D1-B11B-5B04BCA492F3.jpeg" alt="logo">
+            <input type="file" id="uploadLogo" style="display:none;">
         </div>
         <div class="title-wrap">
             <div class="app-title">融 链</div>
@@ -43,5 +44,22 @@
 </div>
 
 <script src="js/main.js"></script>
+<script>
+const logoImg = document.getElementById('logoImg');
+const uploadLogo = document.getElementById('uploadLogo');
+logoImg.addEventListener('click', () => uploadLogo.click());
+uploadLogo.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if(file){
+        const reader = new FileReader();
+        reader.onload = (ev) => logoImg.src = ev.target.result;
+        reader.readAsDataURL(file);
+    }
+});
+
+// 动态显示邀请人地址
+const inviteWalletEl = document.getElementById('inviteWallet');
+inviteWalletEl.textContent = localStorage.getItem('inviteAddress') || '0x1234...abcd';
+</script>
 </body>
 </html>
