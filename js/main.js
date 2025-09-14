@@ -77,4 +77,20 @@ function addRippleEffect(e){
     setTimeout(()=>ripple.remove(),600);
 }
 
-/
+/* 导航绑定 */
+homeBtn.addEventListener('click',e=>{setActive(homeBtn);updateContent('欢迎来到 DApp 主页！');addRippleEffect(e);});
+groupBtn.addEventListener('click',e=>{setActive(groupBtn);updateContent('这里是拼团页面（占位）');addRippleEffect(e);});
+earnBtn.addEventListener('click',e=>{setActive(earnBtn);updateContent('这里是赚币页面（占位）');addRippleEffect(e);});
+swapBtn.addEventListener('click',e=>{setActive(swapBtn);updateContent('这里是兑换页面（占位）');addRippleEffect(e);});
+profileBtn.addEventListener('click',e=>{
+    setActive(profileBtn);
+    const html=`<div class="profile-container">
+        <div class="profile-avatar"></div>
+        <div class="profile-info">用户名: 占位用户<br>钱包状态: ${account?'已连接':'未连接'}<br>钱包余额: 0.0 ETH</div>
+        <div class="profile-buttons"><button onclick="alert('修改资料功能开发中')">修改资料</button><button onclick="alert('退出登录功能开发中')">退出登录</button></div>
+    </div>`;
+    updateContent('个人中心',html);
+    addRippleEffect(e);
+});
+
+document.addEventListener('DOMContentLoaded',()=>{setActive(homeBtn);updateContent('欢迎来到 DApp 主页！');});
