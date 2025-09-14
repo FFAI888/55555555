@@ -1,4 +1,4 @@
-// 页面内容切换
+// 页面切换 + Ripple 动画
 document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.querySelectorAll(".bottom-nav a");
     const mainContent = document.getElementById("mainContent");
@@ -7,11 +7,25 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
 
-            // 移除 active
+            // Ripple 动画
+            const circle = document.createElement("span");
+            const diameter = Math.max(link.clientWidth, link.clientHeight);
+            const radius = diameter / 2;
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${e.clientX - link.offsetLeft - radius}px`;
+            circle.style.top = `${e.clientY - link.offsetTop - radius}px`;
+            circle.classList.add("ripple");
+            const ripple = link.getElementsByClassName("ripple")[0];
+            if (ripple) {
+                ripple.remove();
+            }
+            link.appendChild(circle);
+
+            // 切换 active
             navLinks.forEach(l => l.classList.remove("active"));
             link.classList.add("active");
 
-            // 页面切换
+            // 页面内容切换
             const page = link.dataset.page;
             if (page === "home") {
                 mainContent.innerHTML = `<h2>首页</h2><p>欢迎来到 RongChain DApp 首页！</p>`;
@@ -44,6 +58,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("钱包地址已复制");
             });
         });
+    }
+
+    // 验证登录状态
+    const urlParams = new URLSearchParams(window.location.search);
+    const account = urlParams.get('account');
+    if (!account && window.location.pathname.endsWith("index.html")) {
+        window.location.href = "login.html";
+    }
+    if (account && walletEl) {
+        walletEl.innerText = account;
     }
 });
 
