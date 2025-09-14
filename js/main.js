@@ -5,7 +5,6 @@ const copyInviteBtn = document.getElementById('copyInviteAddress');
 
 // 模拟获取邀请人地址
 function getInviteAddressFromConfirmPage(){
-    // 空字符串表示没有邀请人
     return "0xAbCd...1234";
 }
 
@@ -14,7 +13,7 @@ function bindWalletToInvite(wallet, inviteAddress){
     console.log("绑定钱包", wallet, "到邀请人", inviteAddress);
 }
 
-// 登录页面连接钱包逻辑
+// 登录页面逻辑
 if(connectWalletBtn){
     connectWalletBtn.addEventListener('click', async () => {
         const account = "0xUserWalletAddress123";
@@ -23,11 +22,20 @@ if(connectWalletBtn){
         if(inviteAddress){
             inviteAddressInput.value = inviteAddress;
             bindWalletToInvite(account, inviteAddress);
+            localStorage.setItem('walletBound', 'true');
+            localStorage.setItem('inviteAddress', inviteAddress);
             window.location.href = 'home.html';
         } else {
             window.location.href = 'confirm.html';
         }
     });
+}
+
+// 页面刷新自动跳转
+if(window.location.pathname.endsWith('login.html')){
+    if(localStorage.getItem('walletBound') === 'true'){
+        window.location.href = 'home.html';
+    }
 }
 
 // 复制邀请人地址
@@ -46,6 +54,7 @@ if(copyInviteBtn){
 document.addEventListener('click', e=>{
     if(e.target.classList.contains('confirm-btn')){
         alert(e.target.innerText + ' 已点击');
-        window.location.href = 'home.html'; // 完成绑定后进入主页
+        localStorage.setItem('walletBound', 'true'); // 点击确认关系后绑定
+        window.location.href = 'home.html';
     }
 });
