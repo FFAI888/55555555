@@ -14,7 +14,7 @@ function bindWalletToInvite(wallet, inviteAddress){
     console.log("绑定钱包", wallet, "到邀请人", inviteAddress);
 }
 
-// 连接钱包
+// 登录页面连接钱包逻辑
 if(connectWalletBtn){
     connectWalletBtn.addEventListener('click', async () => {
         const account = "0xUserWalletAddress123";
@@ -42,7 +42,7 @@ if(copyInviteBtn){
     });
 }
 
-// 确认关系按钮事件
+// 确认关系页面按钮事件
 document.addEventListener('click', e=>{
     if(e.target.classList.contains('confirm-btn')){
         alert(e.target.innerText + ' 已点击');
