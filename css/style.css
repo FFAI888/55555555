@@ -1,4 +1,4 @@
-/* style.css v0.39 */
+/* style.css v0.40 */
 
 /* =======================
    顶部条样式
@@ -99,7 +99,8 @@
     left: 0;
     width: 100%;
     height: 60px;
-    background-color: #ffffff;
+-   background-color: #ffffff; /* 白色 */
++   background-color: #f0f0f0; /* ✅ 恢复为浅灰色 */
     box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
 }
 
