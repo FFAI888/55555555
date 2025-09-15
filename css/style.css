@@ -1,3 +1,80 @@
+/* ====== 全局 ====== */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ====== 顶部导航 ====== */
+.topbar {
+    position: fixed;
+    top: env(safe-area-inset-top,0px);
+    left: 0;
+    right: 0;
+    height: 60px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffffcc;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+.topbar .left-wrap { display:flex; align-items:center; }
+.topbar .logo-bg img { width:40px; height:40px; border-radius:8px; }
+.topbar .title-wrap { display:flex; flex-direction:column; justify-content:center; margin-left:8px; }
+.topbar .title-wrap .app-title { font-size:18px; color:#222; }
+.topbar .title-wrap .logo-subtext { font-size:12px; color:#666; }
+.wallet-top { font-size:14px; color:#333; word-break:break-all; cursor:pointer; }
+
+/* ====== 主体 ====== */
+.main-wrap {
+    padding: 80px 16px 100px; /* 顶部导航+底部导航留空 */
+    min-height: calc(100vh - 140px);
+}
+.main-wrap h2 { font-size:18px; color:#222; margin-bottom:12px; }
+.wallet-address { font-size:14px; color:#333; word-break:break-all; margin-bottom:12px; }
+
+/* ====== 底部导航 ====== */
+.bottom-nav {
+    position: fixed;
+    bottom: env(safe-area-inset-bottom,0px);
+    left:0; right:0;
+    height:70px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    background-color: #ffffffcc;
+    border-top:1px solid #e0e0e0;
+    z-index:1000;
+}
+.bottom-nav button {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    background:none;
+    border:none;
+    cursor:pointer;
+}
+.bottom-nav img { width:24px; height:24px; margin-bottom:2px; }
+
+/* ====== Ripple 水波纹 ====== */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.2);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events:none;
+}
+@keyframes ripple {
+    to { transform: scale(4); opacity:0; }
+}
+
 /* ====== 登录页 ====== */
 .login-container {
     width: 90%;
@@ -9,40 +86,15 @@
     text-align:center;
     background:#fff;
 }
-
-/* 横向 Logo + 文字 */
-.login-container .logo-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px; /* 图片和文字之间间距 */
-    margin-bottom: 20px;
-}
-
-.login-container .logo-text-wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .login-container .logo-section img {
-    width: 60px;  /* 可根据屏幕自适应 */
-    height: 60px;
-    border-radius: 12px;
+    width:20vw;
+    max-width:80px;
+    height:auto;
+    border-radius:12px;
+    margin-bottom:12px;
 }
-
-.login-container .logo-text-wrap h1 {
-    margin: 0;
-    font-size: 24px;
-    color: #222;
-}
-
-.login-container .logo-text-wrap p {
-    margin: 2px 0 0 0;
-    font-size: 14px;
-    color: #666;
-}
-
+.login-container .logo-section h1 { font-size:24px; color:#222; }
+.login-container .logo-section p { font-size:14px; color:#666; margin:4px 0 20px; }
 .wallet-btn {
     padding:12px 24px;
     font-size:16px;
@@ -52,13 +104,32 @@
     color:#fff;
     cursor:pointer;
     transition:background 0.3s;
-    margin-top:20px;
 }
 .wallet-btn:hover { background:#43a047; }
+.wallet-address { margin-top:16px; font-size:14px; color:#333; word-break:break-all; }
 
-.wallet-address {
-    margin-top:16px;
-    font-size:14px;
-    color:#333;
-    word-break:break-all;
+/* ====== 个人中心 ====== */
+.profile-container { text-align:center; }
+.profile-avatar { width:80px; height:80px; border-radius:50%; background:#ccc; margin:0 auto 12px; }
+.profile-info { font-size:14px; color:#333; margin-bottom:12px; }
+.profile-buttons button {
+    padding:8px 16px;
+    margin:4px;
+    border:none;
+    border-radius:8px;
+    background:#4CAF50;
+    color:#fff;
+    cursor:pointer;
+}
+.profile-buttons button:hover { background:#43a047; }
+
+/* ====== 响应式 ====== */
+@media (max-width: 375px) {
+    .topbar, .bottom-nav { height:50px; }
+    .bottom-nav img { width:20px; height:20px; }
+    .bottom-nav button { font-size:10px; }
+    .login-container { padding:20px; }
+}
+@media (min-width: 768px) {
+    .main-wrap { padding:100px 40px 120px; }
 }
