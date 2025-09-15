@@ -25,19 +25,15 @@ body{background-color:#f0f2f5;transition: background-color 0.6s ease,color 0.4s 
 .app-title{font-size:18px;font-weight:600;color:#222;margin:0;letter-spacing:5px;}
 .logo-subtext{font-size:12px;color:#666;margin:0;}
 
-/* 右上钱包信息 */
+/* 钱包信息 */
 .wallet-info{
     display:flex;
-    flex-direction:column;
-    align-items:flex-end;
-    gap:4px;
+    flex-direction:row; /* 左右排列 */
+    align-items:center;
+    gap:12px;
     font-size:12px;
     color:#333;
     cursor:pointer;
-}
-.wallet-address-short{
-    font-weight:bold;
-    user-select:none;
 }
 .token-balances{
     display:flex;
@@ -45,8 +41,16 @@ body{background-color:#f0f2f5;transition: background-color 0.6s ease,color 0.4s 
     gap:2px;
     font-size:10px;
     color:#555;
-    text-align:right;
+    text-align:left;
 }
+.wallet-address-full{
+    font-weight:900;   /* 加粗 */
+    font-size:12px;
+    color:#000;        /* 加黑 */
+    user-select:all;   /* 可选择复制 */
+    white-space:nowrap;
+}
+
 .wallet-top{
     max-width:200px;
     text-align:left;
@@ -84,13 +88,7 @@ body{background-color:#f0f2f5;transition: background-color 0.6s ease,color 0.4s 
     .logo-img{width:36px;height:36px;}
     .bottom-nav button img{width:26px;height:26px;}
     .content h2{font-size:18px;}
-    .wallet-top{
-        max-width:120px;
-        overflow:hidden;
-        text-overflow:ellipsis;
-        white-space:nowrap;
-        font-size:10px;
-    }
-    .wallet-info{font-size:10px;}
-    .token-balances{font-size:9px;}
+    .wallet-info{flex-direction:column;align-items:flex-end;font-size:10px;}
+    .token-balances{font-size:9px;text-align:right;}
+    .wallet-address-full{font-size:10px;}
 }
