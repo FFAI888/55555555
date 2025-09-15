@@ -1,16 +1,4 @@
-/* ====== 登录页 ====== */
-.login-container {
-    width: 90%;
-    max-width:400px;
-    margin:0 auto;
-    padding:30px;
-    border-radius:16px;
-    box-shadow:0 8px 24px rgba(0,0,0,0.1);
-    text-align:center;
-    background:#fff;
-}
-
-/* 横向 Logo + 文字 */
+/* 登录页横向 Logo + 文字 */
 .login-container .logo-section {
     display: flex;
     align-items: center;
@@ -26,7 +14,7 @@
 }
 
 .login-container .logo-section img {
-    width: 60px;  /* 可根据屏幕自适应 */
+    width: 60px;  /* 可根据屏幕自适应调整 */
     height: 60px;
     border-radius: 12px;
 }
@@ -41,24 +29,4 @@
     margin: 2px 0 0 0;
     font-size: 14px;
     color: #666;
-}
-
-.wallet-btn {
-    padding:12px 24px;
-    font-size:16px;
-    border:none;
-    border-radius:12px;
-    background:#4CAF50;
-    color:#fff;
-    cursor:pointer;
-    transition:background 0.3s;
-    margin-top:20px;
-}
-.wallet-btn:hover { background:#43a047; }
-
-.wallet-address {
-    margin-top:16px;
-    font-size:14px;
-    color:#333;
-    word-break:break-all;
 }
