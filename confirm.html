@@ -4,53 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>确认关系</title>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: #f0f2f5;
-}
-
-.container {
-    text-align: center;
-    background: #fff;
-    padding: 40px 50px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-
-h2 {
-    color: #333;
-    margin-bottom: 30px;
-}
-
-button {
-    width: 200px;
-    height: 50px;
-    font-size: 16px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    background: linear-gradient(135deg, #4CAF50, #81C784);
-    color: #fff;
-    transition: transform 0.2s;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-
-#message {
-    margin-top: 20px;
-    color: #4CAF50;
-    font-weight: bold;
-}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -78,8 +32,8 @@ stepBtn.addEventListener('click', () => {
         message.innerText = '关系确认成功，欢迎使用融链！';
         stepBtn.disabled = true;
         stepBtn.style.background = '#ccc';
-        // 可在这里跳转主页，比如：
-        // setTimeout(() => { window.location.href = 'index.html'; }, 2000);
+        // 跳转主页
+        setTimeout(() => { window.location.href = 'index.html'; }, 2000);
     }
 });
 </script>
