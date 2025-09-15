@@ -4,45 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DApp 登录</title>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: #f0f2f5;
-}
-
-.login-container {
-    background: #fff;
-    padding: 40px 60px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-h2 {
-    margin-bottom: 20px;
-    color: #333;
-}
-
-button {
-    background: linear-gradient(135deg, #4CAF50, #81C784);
-    border: none;
-    color: #fff;
-    font-size: 16px;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -53,18 +15,18 @@ button:hover {
 </div>
 
 <script>
-// 连接钱包按钮逻辑
 const connectBtn = document.getElementById('connectWalletBtn');
 const walletStatus = document.getElementById('walletStatus');
 
 async function connectWallet() {
-    if (window.ethereum) {
+    if(window.ethereum){
         try {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             const account = accounts[0];
             walletStatus.innerText = '已连接钱包: ' + account;
-            // 可以在这里跳转到首页或存储钱包地址
-        } catch (err) {
+            sessionStorage.setItem('wallet', account);
+            setTimeout(() => { window.location.href = 'confirm.html'; }, 1000);
+        } catch(err){
             walletStatus.innerText = '用户拒绝连接钱包';
         }
     } else {
