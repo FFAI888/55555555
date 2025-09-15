@@ -2,7 +2,6 @@
 function setWalletAddress(address){
     const walletTop = document.getElementById('walletTop');
     walletTop.innerText = address || "未连接钱包";
-    walletTop.style.fontSize = "12px";
     const maxWidth = 200;
     let fontSize = 12;
     const testDiv = document.createElement('div');
@@ -24,9 +23,7 @@ const walletTop = document.getElementById('walletTop');
 walletTop.addEventListener('click', () => {
     const address = walletTop.innerText;
     if(!address || address==="未连接钱包") return;
-    navigator.clipboard.writeText(address).then(() => {
-        alert("钱包地址已复制！");
-    }).catch(()=>alert("复制失败，请手动复制"));
+    navigator.clipboard.writeText(address).then(() => {alert("钱包地址已复制！");}).catch(()=>alert("复制失败，请手动复制"));
 });
 
 // 导航按钮
