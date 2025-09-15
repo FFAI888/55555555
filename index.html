@@ -12,7 +12,7 @@
 <div class="topbar">
     <div class="left-wrap">
         <div class="logo-bg">
-            <img class="logo-img" src="https://raw.githubusercontent.com/FFAI888/55555555/main/img/0E0CB292-E014-42D1-B11B-5B04BCA492F3.jpeg" alt="logo">
+            <img class="logo-img" src="img/logo.jpeg" alt="logo">
         </div>
         <div class="title-wrap">
             <div class="app-title">融 链</div>
@@ -40,19 +40,5 @@
 </div>
 
 <script src="js/main.js"></script>
-<script>
-// 读取 URL 参数钱包地址
-function getAccountFromUrl() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get('account') || '';
-}
-const account = getAccountFromUrl();
-const walletTop = document.getElementById('walletTop');
-const walletAddressDiv = document.getElementById('walletAddress');
-if (account) {
-    walletTop.innerText = account;
-    walletAddressDiv.innerText = '已连接钱包: ' + account;
-}
-</script>
 </body>
 </html>
