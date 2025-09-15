@@ -11,7 +11,7 @@
 <div class="topbar">
     <div class="left-wrap">
         <div class="logo-bg">
-            <img src="https://raw.githubusercontent.com/FFAI888/55555555/main/img/0E0CB292-E014-42D1-B11B-5B04BCA492F3.jpeg" alt="logo">
+            <img src="img/0E0CB292-E014-42D1-B11B-5B04BCA492F3.jpeg" alt="logo">
         </div>
         <div class="title-wrap">
             <span class="app-title">融 链</span>
@@ -42,7 +42,6 @@ const walletTop = document.getElementById('walletTop');
 const walletAddressDiv = document.getElementById('walletAddress');
 const logoutBtn = document.getElementById('logoutBtn');
 
-// 获取 URL 钱包地址
 const params = new URLSearchParams(window.location.search);
 const account = params.get('account');
 if(account){
@@ -51,12 +50,10 @@ if(account){
     walletAddressDiv.innerText = hidden;
 }
 
-// 退出登录
 logoutBtn.addEventListener('click', ()=>{
     window.location.href = 'login.html';
 });
 
-// 底部导航逻辑
 const navButtons = document.querySelectorAll('.bottom-nav button');
 navButtons.forEach(btn => {
     btn.addEventListener('click', () => {
