@@ -94,7 +94,6 @@ body {
     text-align:center;
     background:#fff;
 }
-/* 横向 Logo + 文字 */
 .login-container .logo-section {
     display: flex;
     align-items: center;
