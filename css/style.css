@@ -1,29 +1,73 @@
-/* 基本布局 */
-html, body {margin:0;padding:0;height:100%;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
-body {background-color:#f0f2f5;}
+:root{
+    --topbar-height:56px;
+    --nav-height:70px;
+}
+html,body{margin:0;padding:0;height:100%;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
+body{background-color:#f0f2f5;transition: background-color 0.6s ease,color 0.4s ease;}
 
 /* 顶部条 */
-.topbar {
-    position:fixed;top:0;left:0;right:0;height:56px;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:0 14px;background:rgba(255,255,255,0.7);backdrop-filter:blur(6px);
+.topbar{
+    position:fixed;top:0;left:0;right:0;height:var(--topbar-height);
+    display:flex;align-items:center;justify-content:space-between;padding:0 14px;
+    background:rgba(255,255,255,0.7);backdrop-filter:blur(6px);
     border-bottom:1px solid rgba(0,0,0,0.06);z-index:30;
 }
-.left-wrap {display:flex;align-items:center;gap:10px;}
-.logo-bg {width:44px;height:44px;background:#e6f0ff;border-radius:12px;display:flex;justify-content:center;align-items:center;overflow:hidden;}
-.logo-img {width:100%;height:100%;object-fit:cover;border-radius:12px;}
-.title-wrap {display:flex;flex-direction:column;justify-content:center;align-items:center;}
-.app-title {font-size:18px;font-weight:600;color:#222;margin:0;letter-spacing:5px;}
-.logo-subtext {font-size:12px;color:#666;margin:0;}
-.wallet-top {max-width:200px;text-align:left;font-size:12px;color:#333;word-break:break-all;overflow:hidden;cursor:pointer;}
+.left-wrap{display:flex;align-items:center;gap:10px;}
+.logo-bg{
+    width:44px;height:44px;
+    background:#e6f0ff;
+    border-radius:12px;
+    display:flex;justify-content:center;align-items:center;
+    overflow:hidden;
+}
+.logo-img{width:100%;height:100%;object-fit:cover;border-radius:12px;}
+.title-wrap{display:flex;flex-direction:column;justify-content:center;align-items:center;}
+.app-title{font-size:18px;font-weight:600;color:#222;margin:0;letter-spacing:5px;}
+.logo-subtext{font-size:12px;color:#666;margin:0;}
+
+/* 右上钱包地址 */
+.wallet-top{
+    max-width:200px;
+    text-align:left;
+    font-size:12px;color:#333;word-break:break-all;
+    overflow:hidden;
+    white-space:pre-wrap;
+    cursor:pointer;
+}
 
 /* 主体 */
-.main-wrap {flex:1;display:flex;flex-direction:column;padding-top:66px;padding-bottom:80px;box-sizing:border-box;}
-.content {flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;}
-.wallet-address {font-weight:bold;color:#4CAF50;}
+.main-wrap{flex:1;display:flex;flex-direction:column;padding-top:calc(var(--topbar-height)+10px);padding-bottom:calc(var(--nav-height)+10px);box-sizing:border-box;}
+.content{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;}
+.content h2{color:#333;margin:0 0 10px 0;transition:color 0.4s ease;}
+.wallet-address{font-weight:bold;color:#4CAF50;}
 
-/* 底部导航栏 */
-.bottom-nav {display:flex;justify-content:space-around;background:#fff;border-top:1px solid #ccc;height:70px;position:fixed;left:0;right:0;bottom:0;z-index:20;}
-.bottom-nav button {flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:16px;color:#555;padding:6px 4px;}
-.bottom-nav button img {width:28px;height:28px;margin-bottom:4px;}
-.bottom-nav button.active {color:#fff;background:linear-gradient(135deg,#4CAF50,#81C784);border-radius:12px;}
+/* 底部导航 */
+.bottom-nav{display:flex;justify-content:space-around;background:linear-gradient(270deg,#e0e0e0cc,#d0e6f5cc,#e0e0e0cc);backdrop-filter:blur(10px);border-top:1px solid #ccc;height:var(--nav-height);position:fixed;left:0;right:0;bottom:0;z-index:20;animation:navGradientFlow 10s ease-in-out infinite;}
+.bottom-nav button{flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:16px;color:#555;border-radius:12px;transition:transform 0.2s,color 0.3s,box-shadow 0.3s;overflow:hidden;position:relative;padding:6px 4px;}
+.bottom-nav button img{width:28px;height:28px;margin-bottom:4px;transition:filter .3s,transform .3s;filter:grayscale(100%);}
+.bottom-nav button.active{color:#fff;background:linear-gradient(135deg,#4CAF50,#81C784,#A5D6A7,#4CAF50);animation:gradientMoveButton 5s linear infinite,activeFloatScale 2s ease-in-out infinite;box-shadow:0 4px 12px rgba(0,0,0,0.25);background-size:300% 300%;}
+.bottom-nav button.active img{filter:grayscale(0%) brightness(1.2);transform:scale(1.15);}
+.bottom-nav button:hover{transform:scale(1.05);box-shadow:0 2px 6px rgba(0,0,0,0.15);}
+.bottom-nav button:active{transform:scale(1.2);transition:transform .15s ease-out;}
+
+/* 波纹 */
+.ripple{position:absolute;border-radius:50%;transform:scale(0);animation:ripple .6s linear;background-color:rgba(255,255,255,0.6);pointer-events:none;}
+@keyframes ripple{to{transform:scale(4);opacity:0;}}
+@keyframes activeFloatScale{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-3px) scale(1.05);}}
+@keyframes gradientMoveButton{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+@keyframes navGradientFlow{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+
+@media(max-width:420px){
+    .app-title{font-size:16px;letter-spacing:4px;}
+    .topbar{padding:0 10px;}
+    .logo-img{width:36px;height:36px;}
+    .bottom-nav button img{width:26px;height:26px;}
+    .content h2{font-size:18px;}
+    .wallet-top{
+        max-width:120px;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        font-size:10px;
+    }
+}
