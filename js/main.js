@@ -26,6 +26,28 @@ walletTop.addEventListener('click', () => {
     navigator.clipboard.writeText(address).then(() => {alert("钱包地址已复制！");}).catch(()=>alert("复制失败，请手动复制"));
 });
 
+// 设置折叠钱包地址和代币余额
+function setWalletInfo(address, balances){
+    const walletShort = document.getElementById('walletAddressShort');
+    const tokenBalances = document.getElementById('tokenBalances');
+    
+    walletShort.innerText = address ? address.slice(0,4)+'...'+address.slice(-4) : '≡≡≡';
+    
+    if(balances){
+        tokenBalances.innerHTML = `
+            <div>USDT: ${balances.USDT || '0.00'}</div>
+            <div>CRC: ${balances.CRC || '0.00'}</div>
+            <div>RongChain: ${balances.RongChain || '0.00'}</div>
+        `;
+    } else {
+        tokenBalances.innerHTML = `
+            <div>USDT: 0.00</div>
+            <div>CRC: 0.00</div>
+            <div>RongChain: 0.00</div>
+        `;
+    }
+}
+
 // 导航按钮
 const homeBtn=document.getElementById('homeBtn');
 const groupBtn=document.getElementById('groupBtn');
@@ -79,4 +101,14 @@ profileBtn.addEventListener('click',e=>{
     addRippleEffect(e);
 });
 
-document.addEventListener('DOMContentLoaded',()=>{setActive(homeBtn);updateContent('欢迎来到 DApp 主页！');});
+// 页面加载默认显示
+document.addEventListener('DOMContentLoaded',()=>{
+    setActive(homeBtn);
+    updateContent('欢迎来到 DApp 主页！');
+    // 示例钱包信息
+    setWalletInfo('0x1234567890abcdef1234567890abcdef12345678',{
+        USDT:'100.00',
+        CRC:'50.00',
+        RongChain:'200.00'
+    });
+});
