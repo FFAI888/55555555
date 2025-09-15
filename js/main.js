@@ -26,26 +26,18 @@ walletTop.addEventListener('click', () => {
     navigator.clipboard.writeText(address).then(() => {alert("钱包地址已复制！");}).catch(()=>alert("复制失败，请手动复制"));
 });
 
-// 设置折叠钱包地址和代币余额
+// 设置钱包地址和代币余额
 function setWalletInfo(address, balances){
-    const walletShort = document.getElementById('walletAddressShort');
+    const walletFull = document.getElementById('walletAddressFull');
     const tokenBalances = document.getElementById('tokenBalances');
-    
-    walletShort.innerText = address ? address.slice(0,4)+'...'+address.slice(-4) : '≡≡≡';
-    
-    if(balances){
-        tokenBalances.innerHTML = `
-            <div>USDT: ${balances.USDT || '0.00'}</div>
-            <div>CRC: ${balances.CRC || '0.00'}</div>
-            <div>RongChain: ${balances.RongChain || '0.00'}</div>
-        `;
-    } else {
-        tokenBalances.innerHTML = `
-            <div>USDT: 0.00</div>
-            <div>CRC: 0.00</div>
-            <div>RongChain: 0.00</div>
-        `;
-    }
+
+    walletFull.innerText = address || "未连接钱包";
+
+    tokenBalances.innerHTML = `
+        <div>稳定币 USDT: ${balances?.USDT || '0.00'}</div>
+        <div>消费币 CRC: ${balances?.CRC || '0.00'}</div>
+        <div>平台币 RongChain: ${balances?.RongChain || '0.00'}</div>
+    `;
 }
 
 // 导航按钮
