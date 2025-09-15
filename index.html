@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DApp 主页 v1.2</title>
+<title>DApp 主页 v1.3a</title>
 <link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.8.0/dist/ethers.min.js"></script>
 </head>
 <body>
 
@@ -20,24 +21,17 @@
         </div>
     </div>
 
-    <!-- 钱包信息区 -->
-    <div class="wallet-info" id="walletInfo" title="点击复制钱包地址">
-        <div class="token-balances" id="tokenBalances">
-            <div>稳定币 USDT: 0.00</div>
-            <div>消费币 CRC: 0.00</div>
-            <div>平台币 RongChain: 0.00</div>
-        </div>
-        <div class="wallet-address-full" id="walletAddressFull">0x1234...5678</div>
+    <!-- 钱包地址 -->
+    <div class="wallet-info">
+        <div class="wallet-address-full" id="walletAddressFull">未连接钱包</div>
+        <button id="connectWalletBtn">连接钱包</button>
     </div>
-
-    <div class="wallet-top" id="walletTop" title="点击复制钱包地址"></div>
 </div>
 
 <!-- 主体 -->
 <div class="main-wrap">
     <div class="content" id="mainContent">
         <h2>欢迎来到 DApp 主页！</h2>
-        <div class="wallet-address" id="walletAddress">加载钱包地址...</div>
     </div>
 </div>
 
