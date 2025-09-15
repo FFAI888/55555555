@@ -26,14 +26,6 @@ const pageBackgrounds = {
     profileBtn:'#faf0ff'
 };
 
-// ====== 隐藏钱包地址中间部分 ======
-function hideWalletAddress(address){
-    if(!address) return '';
-    const start = address.slice(0,6);
-    const end = address.slice(-4);
-    return start + '...' + end;
-}
-
 // ====== URL 获取钱包地址 ======
 function getAccountFromUrl() {
     const params = new URLSearchParams(window.location.search);
@@ -41,8 +33,8 @@ function getAccountFromUrl() {
 }
 const account = getAccountFromUrl();
 if(account){
-    walletTop.innerText = hideWalletAddress(account);           // 顶部栏显示
-    walletAddressDiv.innerText = '已连接钱包: ' + hideWalletAddress(account); // 主体显示
+    walletTop.innerText = account;
+    walletAddressDiv.innerText = '已连接钱包: '+account;
 }
 
 // ====== 导航切换 ======
@@ -54,7 +46,7 @@ function setActive(btn){
 }
 
 function updateContent(title,extraHtml=''){
-    mainContent.innerHTML = `<h2>${title}</h2><div class="wallet-address">${account ? '已连接钱包: '+hideWalletAddress(account) : '未获取到钱包地址'}</div>${extraHtml}`;
+    mainContent.innerHTML = `<h2>${title}</h2><div class="wallet-address">${account?"已连接钱包: "+account:"未获取到钱包地址"}</div>${extraHtml}`;
 }
 
 // ====== Ripple 效果 ======
