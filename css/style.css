@@ -1,23 +1,39 @@
-:root{--topbar-height:56px;--nav-height:70px;}
+:root{
+    --topbar-height:56px;
+    --nav-height:70px;
+}
 html,body{margin:0;padding:0;height:100%;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
 body{background-color:#f0f2f5;transition: background-color 0.6s ease,color 0.4s ease;}
 
 /* 顶部条 */
-.topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-height);
-display:flex;align-items:center;justify-content:space-between;padding:0 14px;
-background:rgba(255,255,255,0.7);backdrop-filter:blur(6px);
-border-bottom:1px solid rgba(0,0,0,0.06);z-index:30;}
+.topbar{
+    position:fixed;top:0;left:0;right:0;height:var(--topbar-height);
+    display:flex;align-items:center;justify-content:space-between;padding:0 14px;
+    background:rgba(255,255,255,0.7);backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(0,0,0,0.06);z-index:30;
+}
 .left-wrap{display:flex;align-items:center;gap:10px;}
-.logo-bg{width:44px;height:44px;background:#e6f0ff;border-radius:12px;
-display:flex;justify-content:center;align-items:center;overflow:hidden;}
+.logo-bg{
+    width:44px;height:44px;
+    background:#e6f0ff;
+    border-radius:12px;
+    display:flex;justify-content:center;align-items:center;
+    overflow:hidden;
+}
 .logo-img{width:100%;height:100%;object-fit:cover;border-radius:12px;}
 .title-wrap{display:flex;flex-direction:column;justify-content:center;align-items:center;}
 .app-title{font-size:18px;font-weight:600;color:#222;margin:0;letter-spacing:5px;}
 .logo-subtext{font-size:12px;color:#666;margin:0;}
-.wallet-info{display:flex;align-items:center;gap:8px;}
-.wallet-address-full{font-weight:900;font-size:12px;color:#000;user-select:all;white-space:nowrap;}
-#connectWalletBtn{padding:4px 8px;font-size:12px;background:#4CAF50;color:#fff;border:none;border-radius:6px;cursor:pointer;}
-#connectWalletBtn:hover{background:#45a049;}
+
+/* 右上钱包地址 */
+.wallet-top{
+    max-width:200px;
+    text-align:left;
+    font-size:12px;color:#333;word-break:break-all;
+    overflow:hidden;
+    white-space:pre-wrap;
+    cursor:pointer;
+}
 
 /* 主体 */
 .main-wrap{flex:1;display:flex;flex-direction:column;padding-top:calc(var(--topbar-height)+10px);padding-bottom:calc(var(--nav-height)+10px);box-sizing:border-box;}
@@ -41,22 +57,17 @@ display:flex;justify-content:center;align-items:center;overflow:hidden;}
 @keyframes gradientMoveButton{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 @keyframes navGradientFlow{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
-.profile-container{display:flex;flex-direction:column;align-items:center;}
-.profile-avatar{width:80px;height:80px;background:#ccc;border-radius:50%;margin-bottom:10px;}
-.profile-info{font-size:14px;color:#333;margin-bottom:10px;text-align:center;}
-.profile-tokens{margin-top:10px;font-size:14px;color:#222;}
-.profile-tokens h4{margin:0 0 6px 0;}
-.profile-buttons{margin-top:10px;display:flex;gap:8px;}
-.profile-buttons button{padding:4px 8px;font-size:12px;background:#4CAF50;color:#fff;border:none;border-radius:6px;cursor:pointer;}
-.profile-buttons button:hover{background:#45a049;}
-
 @media(max-width:420px){
     .app-title{font-size:16px;letter-spacing:4px;}
     .topbar{padding:0 10px;}
     .logo-img{width:36px;height:36px;}
     .bottom-nav button img{width:26px;height:26px;}
     .content h2{font-size:18px;}
-    .wallet-info{flex-direction:column;align-items:flex-end;font-size:10px;}
-    .wallet-address-full{font-size:10px;}
-    .profile-info,.profile-tokens,.profile-buttons button{font-size:10px;}
+    .wallet-top{
+        max-width:120px;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        font-size:10px;
+    }
 }
