@@ -1,5 +1,6 @@
 /* ====== 全局 ====== */
 * {margin:0; padding:0; box-sizing:border-box;}
+html { font-size: 16px; } /* rem 基准 */
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f7fa;
@@ -14,7 +15,7 @@ body {
     left: 0;
     right: 0;
     height: 60px;
-    padding: 0 16px;
+    padding: 0 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -23,19 +24,26 @@ body {
     z-index: 1000;
 }
 .topbar .left-wrap { display:flex; align-items:center; }
-.topbar .logo-bg img { width:40px; height:40px; border-radius:8px; }
-.topbar .title-wrap { display:flex; flex-direction:column; justify-content:center; margin-left:8px; }
-.topbar .title-wrap .app-title { font-size:18px; color:#222; }
-.topbar .title-wrap .logo-subtext { font-size:12px; color:#666; }
-.wallet-top { font-size:14px; color:#333; word-break:break-all; cursor:pointer; }
+.topbar .logo-bg img { 
+    width: 2.5rem; 
+    height: 2.5rem; 
+    border-radius:0.5rem; 
+    max-width:40px;
+}
+.topbar .title-wrap { display:flex; flex-direction:column; justify-content:center; margin-left:0.5rem; }
+.topbar .title-wrap .app-title { font-size:1.125rem; color:#222; }
+.topbar .title-wrap .logo-subtext { font-size:0.75rem; color:#666; }
+.wallet-top { font-size:0.875rem; color:#333; word-break:break-all; cursor:pointer; }
 
 /* ====== 主体 ====== */
 .main-wrap {
-    padding: 80px 16px 100px; /* 顶部导航+底部导航留空 */
-    min-height: calc(100vh - 140px);
+    padding: 5rem 1rem 7rem; /* 顶部导航+底部导航留空 */
+    max-width: 400px;
+    margin: 0 auto;
+    min-height: calc(100vh - 12rem);
 }
-.main-wrap h2 { font-size:18px; color:#222; margin-bottom:12px; }
-.wallet-address { font-size:14px; color:#333; word-break:break-all; margin-bottom:12px; }
+.main-wrap h2 { font-size:1.125rem; color:#222; margin-bottom:0.75rem; }
+.wallet-address { font-size:0.875rem; color:#333; word-break:break-all; margin-bottom:0.75rem; }
 
 /* ====== 底部导航 ====== */
 .bottom-nav {
@@ -55,12 +63,12 @@ body {
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    font-size:12px;
+    font-size:0.75rem;
     background:none;
     border:none;
     cursor:pointer;
 }
-.bottom-nav img { width:24px; height:24px; margin-bottom:2px; }
+.bottom-nav img { width:1.5rem; height:1.5rem; margin-bottom:0.125rem; max-width:24px; max-height:24px; }
 
 /* ====== Ripple 水波纹 ====== */
 .ripple {
@@ -80,43 +88,55 @@ body {
     width: 90%;
     max-width:400px;
     margin:0 auto;
-    padding:30px;
-    border-radius:16px;
-    box-shadow:0 8px 24px rgba(0,0,0,0.1);
+    padding:1.875rem 2.5rem; /* 30px 40px */
+    border-radius:1rem;
+    box-shadow:0 0.5rem 1.5rem rgba(0,0,0,0.1);
     text-align:center;
     background:#fff;
 }
-.login-container .logo-section img {
-    width:20vw;
-    max-width:80px;
-    height:auto;
-    border-radius:12px;
-    margin-bottom:12px;
+/* 横向 Logo + 文字 */
+.login-container .logo-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem; /* 12px */
+    margin-bottom: 1.25rem; /* 20px */
 }
-.login-container .logo-section h1 { font-size:24px; color:#222; }
-.login-container .logo-section p { font-size:14px; color:#666; margin:4px 0 20px; }
+.login-container .logo-section img {
+    width: 20vw;
+    max-width: 80px;
+    height: auto;
+    border-radius:0.75rem;
+}
+.login-container .logo-text-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.login-container .logo-text-wrap h1 { font-size:1.5rem; color:#222; margin:0; }
+.login-container .logo-text-wrap p { font-size:0.875rem; color:#666; margin:0.125rem 0 1.25rem; }
 .wallet-btn {
-    padding:12px 24px;
-    font-size:16px;
+    padding:0.75rem 1.5rem;
+    font-size:1rem;
     border:none;
-    border-radius:12px;
+    border-radius:0.75rem;
     background:#4CAF50;
     color:#fff;
     cursor:pointer;
     transition:background 0.3s;
 }
 .wallet-btn:hover { background:#43a047; }
-.wallet-address { margin-top:16px; font-size:14px; color:#333; word-break:break-all; }
+.wallet-address { margin-top:1rem; font-size:0.875rem; color:#333; word-break:break-all; }
 
 /* ====== 个人中心 ====== */
-.profile-container { text-align:center; }
-.profile-avatar { width:80px; height:80px; border-radius:50%; background:#ccc; margin:0 auto 12px; }
-.profile-info { font-size:14px; color:#333; margin-bottom:12px; }
+.profile-container { text-align:center; max-width:400px; margin:0 auto; }
+.profile-avatar { width:5rem; height:5rem; border-radius:50%; background:#ccc; margin:0 auto 0.75rem; }
+.profile-info { font-size:0.875rem; color:#333; margin-bottom:0.75rem; }
 .profile-buttons button {
-    padding:8px 16px;
-    margin:4px;
+    padding:0.5rem 1rem;
+    margin:0.25rem;
     border:none;
-    border-radius:8px;
+    border-radius:0.5rem;
     background:#4CAF50;
     color:#fff;
     cursor:pointer;
@@ -126,10 +146,10 @@ body {
 /* ====== 响应式 ====== */
 @media (max-width: 375px) {
     .topbar, .bottom-nav { height:50px; }
-    .bottom-nav img { width:20px; height:20px; }
-    .bottom-nav button { font-size:10px; }
-    .login-container { padding:20px; }
+    .bottom-nav img { width:1.25rem; height:1.25rem; }
+    .bottom-nav button { font-size:0.625rem; }
+    .login-container { padding:1.25rem; } /* 20px */
 }
 @media (min-width: 768px) {
-    .main-wrap { padding:100px 40px 120px; }
+    .main-wrap { padding:6.25rem 2.5rem 7.5rem; } /* 100px 40px 120px */
 }
