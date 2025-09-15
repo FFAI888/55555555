@@ -2,39 +2,41 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>首页 - DApp</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DApp 主页 v0.37</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- ====== 顶部导航 ====== -->
+<!-- 顶部 -->
 <div class="topbar">
     <div class="left-wrap">
         <div class="logo-bg">
-            <img src="https://raw.githubusercontent.com/FFAI888/55555555/main/img/0E0CB292-E014-42D1-B11B-5B04BCA492F3.jpeg" alt="logo">
+            <img class="logo-img" src="https://raw.githubusercontent.com/FFAI888/55555555/main/img/0E0CB292-E014-42D1-B11B-5B04BCA492F3.jpeg" alt="logo">
         </div>
         <div class="title-wrap">
-            <span class="app-title">融 链</span>
-            <span class="logo-subtext">RongChain</span>
+            <div class="app-title">融 链</div>
+            <div class="logo-subtext">RongChain</div>
         </div>
     </div>
-    <div class="wallet-top" id="walletTop">未连接</div>
+    <div class="wallet-top" id="walletTop" title="点击复制钱包地址"></div>
 </div>
 
-<!-- ====== 主体内容 ====== -->
+<!-- 主体 -->
 <div class="main-wrap">
-    <h2>欢迎来到首页</h2>
-    <div class="wallet-address" id="walletAddress">钱包未连接</div>
+    <div class="content" id="mainContent">
+        <h2>欢迎来到 DApp 主页！</h2>
+        <div class="wallet-address" id="walletAddress">加载钱包地址...</div>
+    </div>
 </div>
 
-<!-- ====== 底部导航 ====== -->
-<div class="bottom-nav">
-    <button data-page="home"><img src="img/home.png" alt="首页"><span>首页</span></button>
-    <button data-page="group"><img src="img/group.png" alt="拼团"><span>拼团</span></button>
-    <button data-page="earn"><img src="img/earn.png" alt="赚币"><span>赚币</span></button>
-    <button data-page="swap"><img src="img/swap.png" alt="兑换"><span>兑换</span></button>
-    <button data-page="profile"><img src="img/profile.png" alt="我的"><span>我的</span></button>
+<!-- 底部导航 -->
+<div class="bottom-nav" id="bottomNav">
+    <button id="homeBtn" class="active"><img src="https://img.icons8.com/fluency/48/000000/home.png" alt="首页">首页</button>
+    <button id="groupBtn"><img src="https://img.icons8.com/fluency/48/000000/conference.png" alt="拼团">拼团</button>
+    <button id="earnBtn"><img src="https://img.icons8.com/fluency/48/000000/coin-in-hand.png" alt="赚币">赚币</button>
+    <button id="swapBtn"><img src="https://img.icons8.com/fluency/48/000000/exchange.png" alt="兑换">兑换</button>
+    <button id="profileBtn"><img src="https://img.icons8.com/fluency/48/000000/user-male-circle.png" alt="我的">我的</button>
 </div>
 
 <script src="js/main.js"></script>
