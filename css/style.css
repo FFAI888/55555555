@@ -1,166 +1,29 @@
-/* style.css v0.40 */
+/* 基本布局 */
+html, body {margin:0;padding:0;height:100%;font-family:Arial,sans-serif;display:flex;flex-direction:column;}
+body {background-color:#f0f2f5;}
 
-/* =======================
-   顶部条样式
-======================= */
+/* 顶部条 */
 .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f5f5f5;
-    padding: 5px 15px;
-    height: 60px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position:fixed;top:0;left:0;right:0;height:56px;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 14px;background:rgba(255,255,255,0.7);backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(0,0,0,0.06);z-index:30;
 }
+.left-wrap {display:flex;align-items:center;gap:10px;}
+.logo-bg {width:44px;height:44px;background:#e6f0ff;border-radius:12px;display:flex;justify-content:center;align-items:center;overflow:hidden;}
+.logo-img {width:100%;height:100%;object-fit:cover;border-radius:12px;}
+.title-wrap {display:flex;flex-direction:column;justify-content:center;align-items:center;}
+.app-title {font-size:18px;font-weight:600;color:#222;margin:0;letter-spacing:5px;}
+.logo-subtext {font-size:12px;color:#666;margin:0;}
+.wallet-top {max-width:200px;text-align:left;font-size:12px;color:#333;word-break:break-all;overflow:hidden;cursor:pointer;}
 
-.left-wrap {
-    display: flex;
-    align-items: center;
-}
+/* 主体 */
+.main-wrap {flex:1;display:flex;flex-direction:column;padding-top:66px;padding-bottom:80px;box-sizing:border-box;}
+.content {flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;}
+.wallet-address {font-weight:bold;color:#4CAF50;}
 
-.logo-bg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-}
-
-/* logo 图片自适应 */
-.logo-img {
-    width: auto;
-    max-width: 50px;
-    height: 50px;
-    object-fit: contain;
-    display: block;
-}
-
-/* 标题 */
-.title-wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.app-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
-}
-
-.logo-subtext {
-    font-size: 12px;
-    color: #666;
-}
-
-/* 钱包显示（右上角） */
-.wallet-top {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    font-size: 12px;
-    color: #333;
-    cursor: pointer;
-    line-height: 1.2;
-}
-
-#walletBalance {
-    font-size: 12px;
-    color: #000;
-    margin-top: 2px;
-}
-
-/* =======================
-   主体内容
-======================= */
-.main-wrap {
-    padding: 15px;
-}
-
-.content h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.wallet-address {
-    font-size: 14px;
-    color: #555;
-    margin-top: 5px;
-}
-
-/* =======================
-   底部导航
-======================= */
-.bottom-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
--   background-color: #ffffff; /* 白色 */
-+   background-color: #f0f0f0; /* ✅ 恢复为浅灰色 */
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-}
-
-.bottom-nav button {
-    border: none;
-    background: none;
-    font-size: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #333;
-    cursor: pointer;
-}
-
-.bottom-nav button img {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 2px;
-}
-
-.bottom-nav button.active {
-    color: #000;
-}
-
-/* =======================
-   个人中心
-======================= */
-.profile-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.profile-avatar {
-    width: 80px;
-    height: 80px;
-    background-color: #ddd;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.profile-info {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.profile-buttons button {
-    margin: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-/* =======================
-   响应式适配
-======================= */
-@media (max-width: 480px) {
-    .app-title { font-size: 16px; }
-    .logo-subtext { font-size: 10px; }
-    .bottom-nav button { font-size: 10px; }
-    .bottom-nav button img { width: 20px; height: 20px; }
-    .wallet-top { font-size: 10px; }
-}
+/* 底部导航栏 */
+.bottom-nav {display:flex;justify-content:space-around;background:#fff;border-top:1px solid #ccc;height:70px;position:fixed;left:0;right:0;bottom:0;z-index:20;}
+.bottom-nav button {flex:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:16px;color:#555;padding:6px 4px;}
+.bottom-nav button img {width:28px;height:28px;margin-bottom:4px;}
+.bottom-nav button.active {color:#fff;background:linear-gradient(135deg,#4CAF50,#81C784);border-radius:12px;}
