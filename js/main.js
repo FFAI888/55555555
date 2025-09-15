@@ -1,5 +1,3 @@
-/* 原有逻辑保持 v0.37 */
-
 /* 获取导航按钮和主内容元素 */
 const homeBtn=document.getElementById('homeBtn');
 const groupBtn=document.getElementById('groupBtn');
@@ -8,15 +6,17 @@ const swapBtn=document.getElementById('swapBtn');
 const profileBtn=document.getElementById('profileBtn');
 const mainContent=document.getElementById('mainContent');
 const bottomNav=document.getElementById('bottomNav');
+
+/* 新增：右上角钱包地址显示和点击复制 */
 const walletTop=document.getElementById('walletTop');
+const account="0x1234567890abcdef1234567890abcdef12345678"; // 模拟钱包地址
 
-/* 模拟钱包地址 */
-let account="0x1234567890abcdef1234567890abcdef12345678";
-
-/* 更新钱包显示 */
 if(walletTop){
-    walletTop.innerText=account;
-    walletTop.addEventListener('click',()=>{navigator.clipboard.writeText(account);alert('已复制钱包地址:'+account);});
+    walletTop.innerText=account; // 显示钱包地址
+    walletTop.addEventListener('click',()=>{
+        navigator.clipboard.writeText(account); // 复制到剪贴板
+        alert('已复制钱包地址: '+account);
+    });
 }
 
 /* 导航切换函数 */
