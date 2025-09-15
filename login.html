@@ -28,7 +28,7 @@ async function connectWallet() {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             const account = accounts[0];
             walletAddressDiv.innerText = '已连接钱包: ' + account;
-            // 连接成功可以跳转到首页
+            // 连接成功跳转到首页并传递钱包地址
             setTimeout(() => {
                 window.location.href = 'index.html?account=' + account;
             }, 800);
@@ -45,7 +45,6 @@ connectBtn.addEventListener('click', connectWallet);
 </script>
 
 <style>
-/* 简单登录样式 */
 body{margin:0;padding:0;font-family:Arial,sans-serif;background:#f0f2f5;display:flex;justify-content:center;align-items:center;height:100vh;}
 .login-container{background:#fff;padding:30px 40px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.1);text-align:center;}
 .logo-section img{width:80px;height:80px;border-radius:12px;margin-bottom:12px;}
