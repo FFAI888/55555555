@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>个人中心 - DApp</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+    <div class="left-wrap">
+        <div class="logo-bg">
+            <img src="https://raw.githubusercontent.com/FFAI888/55555555/main/img/0E0CB292-E014-42D1-B11B-5B04BCA492F3.jpeg" alt="logo">
+        </div>
+        <div class="title-wrap">
+            <span class="app-title">融 链</span>
+            <span class="logo-subtext">RongChain</span>
+        </div>
+    </div>
+    <div class="wallet-top" id="walletTop">未连接</div>
+</div>
+
+<div class="main-wrap profile-container">
+    <div class="profile-avatar"></div>
+    <div class="profile-info">钱包地址: <span id="walletAddress">未连接</span></div>
+    <div class="profile-buttons">
+        <button id="logoutBtn">退出登录</button>
+    </div>
+</div>
+
+<div class="bottom-nav">
+    <button data-page="home"><img src="img/home.png" alt="首页"><span>首页</span></button>
+    <button data-page="group"><img src="img/group.png" alt="拼团"><span>拼团</span></button>
+    <button data-page="earn"><img src="img/earn.png" alt="赚币"><span>赚币</span></button>
+    <button data-page="swap"><img src="img/swap.png" alt="兑换"><span>兑换</span></button>
+    <button data-page="profile"><img src="img/profile.png" alt="我的"><span>我的</span></button>
+</div>
+
+<script>
+const walletTop = document.getElementById('walletTop');
+const walletAddressDiv = document.getElementById('walletAddress');
+const logoutBtn = document.getElementById('logoutBtn');
+
+// 获取 URL 钱包地址
+const params = new URLSearchParams(window.location.search);
+const account = params.get('account');
+if(account){
+    const hidden = account.slice(0,6) + '...' + account.slice(-4);
+    walletTop.innerText = hidden;
+    walletAddressDiv.innerText = hidden;
+}
+
+// 退出登录
+logoutBtn.addEventListener('click', ()=>{
+    window.location.href = 'login.html';
+});
+
+// 底部导航逻辑
+const navButtons = document.querySelectorAll('.bottom-nav button');
+navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const page = btn.getAttribute('data-page');
+        switch(page){
+            case 'home':
+                window.location.href = 'index.html' + (account ? '?account='+account : '');
+                break;
+            case 'group':
+                alert('拼团页面开发中...');
+                break;
+            case 'earn':
+                alert('赚币页面开发中...');
+                break;
+            case 'swap':
+                alert('兑换页面开发中...');
+                break;
+            case 'profile':
+                window.location.href = 'profile.html' + (account ? '?account='+account : '');
+                break;
+        }
+    });
+});
+</script>
+</body>
+</html>
