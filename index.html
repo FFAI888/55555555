@@ -3,9 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DApp 主页 v1.3a</title>
+<title>DApp 主页 v1.0</title>
 <link rel="stylesheet" href="css/style.css">
-<script src="https://cdn.jsdelivr.net/npm/ethers@6.8.0/dist/ethers.min.js"></script>
 </head>
 <body>
 
@@ -20,18 +19,14 @@
             <div class="logo-subtext">RongChain</div>
         </div>
     </div>
-
-    <!-- 钱包地址 -->
-    <div class="wallet-info">
-        <div class="wallet-address-full" id="walletAddressFull">未连接钱包</div>
-        <button id="connectWalletBtn">连接钱包</button>
-    </div>
+    <div class="wallet-top" id="walletTop" title="点击复制钱包地址"></div>
 </div>
 
 <!-- 主体 -->
 <div class="main-wrap">
     <div class="content" id="mainContent">
         <h2>欢迎来到 DApp 主页！</h2>
+        <div class="wallet-address" id="walletAddress">加载钱包地址...</div>
     </div>
 </div>
 
