@@ -10,7 +10,7 @@
 
 <div class="login-container">
     <div class="logo-section">
-        <img class="logo-img" src="img/0E0CB292-E014-42D1-B11B-5B04BCA492F3.jpeg" alt="logo">
+        <img class="logo-img" src="https://raw.githubusercontent.com/FFAI888/55555555/main/img/0E0CB292-E014-42D1-B11B-5B04BCA492F3.jpeg" alt="logo">
         <div class="logo-text-wrap">
             <h1>融 链</h1>
             <p>RongChain</p>
@@ -29,8 +29,10 @@ async function connectWallet() {
         try {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             const account = accounts[0];
+            // 隐藏中间部分
             const hiddenAccount = account.slice(0,6) + '...' + account.slice(-4);
             walletAddressDiv.innerText = '已连接钱包: ' + hiddenAccount;
+            // 跳转首页并传递钱包地址
             setTimeout(() => {
                 window.location.href = 'index.html?account=' + account;
             }, 800);
