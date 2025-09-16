@@ -1,25 +1,27 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;background:#f5f5f5;color:#333;}
 
-/* 登录/确认页 */
-.login-wrap{max-width:400px;width:90%;margin:40px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);text-align:center;word-wrap:break-word;}
-.login-wrap h2{font-size:24px;margin-bottom:20px;}
-.login-wrap button,.confirm-btn{width:100%;padding:12px;font-size:16px;border:none;border-radius:8px;background:linear-gradient(135deg,#4CAF50,#81C784);color:#fff;cursor:pointer;transition:transform 0.2s ease;margin-top:10px;}
-.login-wrap button:hover,.confirm-btn:hover{transform:scale(1.05);}
-.login-wrap input[type=text]{width:100%;padding:10px;margin-top:15px;font-size:16px;border-radius:6px;border:1px solid #ccc;background:#f9f9f9;text-align:center;user-select:none;}
-
-/* 确认按钮容器 */
-.confirm-buttons{display:flex;justify-content:space-between;margin-top:20px;gap:10px;}
-.confirm-btn{flex:1;padding:12px 0;}
-
 /* 顶部导航 */
 .topbar{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:10px 5%;box-shadow:0 2px 6px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100;}
 .left-wrap{display:flex;align-items:center;}
 .logo-bg{width:40px;height:40px;background:rgba(76,175,80,0.1);border-radius:50%;display:flex;justify-content:center;align-items:center;overflow:hidden;}
 .logo-img{width:100%;height:auto;max-width:30px;}
-.title-wrap{display:flex;flex-direction:column;margin-left:10px;}
-.app-title{font-size:18px;font-weight:bold;}
-.logo-subtext{font-size:12px;color:#666;}
+.title-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center; /* 水平居中 */
+    justify-content:center;
+}
+.app-title{
+    font-size:18px;
+    font-weight:bold;
+    text-align:center;
+}
+.logo-subtext{
+    font-size:12px;
+    color:#666;
+    text-align:center;
+}
 .wallet-top{font-size:14px;color:#333;cursor:pointer;word-break:break-all;}
 
 /* 主内容 */
@@ -32,9 +34,18 @@ body{overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;backg
 .bottom-nav button.active{color:#000;}
 .bottom-nav button img{width:24px;height:auto;margin-bottom:2px;}
 
-/* Ripple */
+/* Ripple 效果 */
 .ripple{position:absolute;border-radius:50%;background:rgba(0,0,0,0.2);transform:scale(0);animation:ripple-effect 0.6s linear;pointer-events:none;}
 @keyframes ripple-effect{to{ transform:scale(4); opacity:0;}}
+
+/* 登录/确认页 */
+.login-wrap{max-width:400px;width:90%;margin:40px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);text-align:center;word-wrap:break-word;}
+.login-wrap h2{font-size:24px;margin-bottom:20px;}
+.login-wrap button,.confirm-btn{width:100%;padding:12px;font-size:16px;border:none;border-radius:8px;background:linear-gradient(135deg,#4CAF50,#81C784);color:#fff;cursor:pointer;transition:transform 0.2s ease;margin-top:10px;}
+.login-wrap button:hover,.confirm-btn:hover{transform:scale(1.05);}
+.login-wrap input[type=text]{width:100%;padding:10px;margin-top:15px;font-size:16px;border-radius:6px;border:1px solid #ccc;background:#f9f9f9;text-align:center;user-select:none;}
+.confirm-buttons{display:flex;justify-content:space-between;margin-top:20px;gap:10px;}
+.confirm-btn{flex:1;padding:12px 0;}
 
 /* 响应式 */
 @media(max-width:480px){
