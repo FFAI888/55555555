@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>连接钱包登录</title>
 <link rel="stylesheet" href="css/style.css">
 <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
@@ -22,15 +22,10 @@ function getQueryParam(name){
 }
 const inviterInput = document.getElementById('inviter');
 const referrer = getQueryParam('referrer');
-if(referrer){
-    inviterInput.value = "邀请人: " + referrer;
-}
+if(referrer){ inviterInput.value = "邀请人: " + referrer; }
 
 document.getElementById('connectWalletBtn').addEventListener('click', async () => {
-    if(!window.ethereum){
-        alert("未检测到钱包插件，请安装 MetaMask 或其他钱包！");
-        return;
-    }
+    if(!window.ethereum){ alert("未检测到钱包插件，请安装钱包！"); return; }
     try{
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
         if(accounts.length === 0){ alert("钱包连接失败"); return; }
