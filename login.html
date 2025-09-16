@@ -17,11 +17,19 @@
 
 <script>
 const connectBtn = document.getElementById('connectWalletBtn');
-connectBtn.addEventListener('click', () => {
-    // 模拟钱包连接
-    sessionStorage.setItem('walletConnected', 'true'); // 登录标记
-    alert("钱包已连接！");
-    window.location.href = "index.html"; // 跳转主页
+connectBtn.addEventListener('click', async () => {
+    if(!window.ethereum){
+        alert("未检测到钱包插件，请安装 MetaMask 或其他钱包！");
+        return;
+    }
+    try{
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        sessionStorage.setItem('walletConnected', 'true'); // 登录标记
+        alert("钱包已连接！");
+        window.location.href = "index.html"; // 跳转主页
+    }catch(err){
+        alert("钱包连接失败，请重试！");
+    }
 });
 </script>
 
