@@ -18,10 +18,10 @@
 <script>
 const connectBtn = document.getElementById('connectWalletBtn');
 connectBtn.addEventListener('click', () => {
-    // 模拟钱包连接，可调用现有 main.js 方法
+    // 模拟钱包连接
+    sessionStorage.setItem('walletConnected', 'true'); // 登录标记
     alert("钱包已连接！");
-    // 跳转到主页
-    window.location.href = "index.html";
+    window.location.href = "index.html"; // 跳转主页
 });
 </script>
 
