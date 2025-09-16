@@ -1,49 +1,47 @@
-/* 通用样式 */
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
-body{background:#f5f5f5;color:#333;min-height:100vh;display:flex;flex-direction:column;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;background:#f5f5f5;color:#333;}
 
-/* 登录页/确认关系页容器 */
-.login-wrap{max-width:400px;width:90%;margin:40px auto;background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);text-align:center;}
+/* 登录/确认页 */
+.login-wrap{max-width:400px;width:90%;margin:40px auto;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);text-align:center;word-wrap:break-word;}
 .login-wrap h2{font-size:24px;margin-bottom:20px;}
 .login-wrap button,.confirm-btn{width:100%;padding:12px;font-size:16px;border:none;border-radius:8px;background:linear-gradient(135deg,#4CAF50,#81C784);color:#fff;cursor:pointer;transition:transform 0.2s ease;margin-top:10px;}
 .login-wrap button:hover,.confirm-btn:hover{transform:scale(1.05);}
-.login-wrap input[type=text]{width:100%;padding:10px;margin-top:15px;font-size:16px;border-radius:6px;border:1px solid #ccc;background:#f9f9f9;text-align:center;}
+.login-wrap input[type=text]{width:100%;padding:10px;margin-top:15px;font-size:16px;border-radius:6px;border:1px solid #ccc;background:#f9f9f9;text-align:center;user-select:none;}
 
-/* 确认关系页按钮 */
+/* 确认按钮容器 */
 .confirm-buttons{display:flex;justify-content:space-between;margin-top:20px;gap:10px;}
 .confirm-btn{flex:1;padding:12px 0;}
 
-/* 顶部导航栏/Logo */
-.topbar{display:flex;justify-content:space-between;align-items:center;background:#ffffff;padding:10px 20px;box-shadow:0 2px 6px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100;}
+/* 顶部导航 */
+.topbar{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:10px 5%;box-shadow:0 2px 6px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100;}
 .left-wrap{display:flex;align-items:center;}
 .logo-bg{width:40px;height:40px;background:rgba(76,175,80,0.1);border-radius:50%;display:flex;justify-content:center;align-items:center;overflow:hidden;}
-.logo-img{width:30px;height:30px;object-fit:contain;}
+.logo-img{width:100%;height:auto;max-width:30px;}
 .title-wrap{display:flex;flex-direction:column;margin-left:10px;}
 .app-title{font-size:18px;font-weight:bold;}
 .logo-subtext{font-size:12px;color:#666;}
-.wallet-top{font-size:14px;color:#333;cursor:pointer;}
+.wallet-top{font-size:14px;color:#333;cursor:pointer;word-break:break-all;}
 
-/* 主页内容 */
-.main-wrap{flex:1;padding:20px;}
-.wallet-address{margin-top:10px;font-size:14px;color:#666;}
+/* 主内容 */
+.main-wrap{flex:1;padding:20px 5%;overflow-x:hidden;}
+.wallet-address{margin-top:10px;font-size:14px;color:#666;word-break:break-all;}
 
 /* 底部导航 */
-.bottom-nav{display:flex;justify-content:space-around;align-items:center;background:#ffffff;height:60px;box-shadow:0 -2px 6px rgba(0,0,0,0.1);position:fixed;bottom:0;width:100%;z-index:100;}
+.bottom-nav{display:flex;justify-content:space-around;align-items:center;background:#fff;height:60px;box-shadow:0 -2px 6px rgba(0,0,0,0.1);position:fixed;bottom:0;width:100%;padding:0 5%;z-index:100;}
 .bottom-nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;background:none;border:none;font-size:12px;color:#555;cursor:pointer;position:relative;padding:5px 0;}
 .bottom-nav button.active{color:#000;}
-.bottom-nav button img{width:24px;height:24px;margin-bottom:2px;}
+.bottom-nav button img{width:24px;height:auto;margin-bottom:2px;}
 
-/* Ripple 动画 */
+/* Ripple */
 .ripple{position:absolute;border-radius:50%;background:rgba(0,0,0,0.2);transform:scale(0);animation:ripple-effect 0.6s linear;pointer-events:none;}
 @keyframes ripple-effect{to{ transform:scale(4); opacity:0;}}
 
-/* 响应式适配 */
+/* 响应式 */
 @media(max-width:480px){
-.login-wrap,.main-wrap{width:95%;margin:20px auto;}
-.topbar,.bottom-nav{padding:8px 15px;}
+.login-wrap,.main-wrap{width:95%;margin:20px auto;padding:15px;}
+.topbar,.bottom-nav{padding:8px 5%;}
+.bottom-nav button img{width:20px;}
 .app-title{font-size:16px;}
 .logo-subtext{font-size:11px;}
 .wallet-top{font-size:12px;}
-.bottom-nav button{font-size:10px;}
-.bottom-nav button img{width:20px;height:20px;}
 }
