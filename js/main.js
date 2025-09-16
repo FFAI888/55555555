@@ -1,18 +1,4 @@
-// ------------------ 新增：安全修改背景函数 ------------------
-function setPageBackground(color){
-    document.body.style.setProperty('--page-bg-color', color);
-}
-
-function setNavBackground(value){
-    document.getElementById('bottomNav').style.setProperty('--nav-bg-color', value);
-}
-
-// 示例：修改页面和导航栏背景
-// setPageBackground('#e6f7ff');
-// setNavBackground('linear-gradient(270deg,#cce0ff,#99ccff,#cce0ff)');
-// -------------------------------------------------------------
-
-// 原有 JS 代码保持不变
+// 钱包地址显示和缩放
 function setWalletAddress(address){
     const walletTop = document.getElementById('walletTop');
     walletTop.innerText = address || "未连接钱包";
@@ -32,6 +18,7 @@ function setWalletAddress(address){
     document.body.removeChild(testDiv);
 }
 
+// 点击复制钱包地址
 const walletTop = document.getElementById('walletTop');
 walletTop.addEventListener('click', () => {
     const address = walletTop.innerText;
@@ -39,7 +26,7 @@ walletTop.addEventListener('click', () => {
     navigator.clipboard.writeText(address).then(() => {alert("钱包地址已复制！");}).catch(()=>alert("复制失败，请手动复制"));
 });
 
-// 导航按钮逻辑保持不变
+// 导航按钮
 const homeBtn=document.getElementById('homeBtn');
 const groupBtn=document.getElementById('groupBtn');
 const earnBtn=document.getElementById('earnBtn');
