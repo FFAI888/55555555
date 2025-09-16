@@ -8,15 +8,12 @@
 <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 </head>
 <body>
-
 <div class="login-wrap">
     <h2>确认关系</h2>
     <div class="confirm-info">
         <p id="inviterDisplay">邀请人: 未知</p>
         <p id="walletDisplay">您的钱包: 未连接</p>
     </div>
-
-    <!-- 三个按钮 -->
     <div class="confirm-buttons">
         <button class="confirm-btn" id="receiveBtn">确认接收</button>
         <button class="confirm-btn" id="sendBtn">确认发送</button>
@@ -25,7 +22,6 @@
 </div>
 
 <script>
-// 获取邀请人
 function getQueryParam(name){
     const params = new URLSearchParams(window.location.search);
     return params.get(name);
@@ -35,28 +31,17 @@ const walletDisplay = document.getElementById('walletDisplay');
 const referrer = getQueryParam('referrer');
 if(referrer){ inviterDisplay.textContent = "邀请人: " + referrer; }
 
-// 检测钱包
 async function checkWallet(){
-    if(!window.ethereum){
-        alert("未检测到钱包插件，请安装钱包！");
-        return false;
-    }
+    if(!window.ethereum){ alert("未检测到钱包插件！"); return false; }
     try{
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        if(accounts.length === 0){
-            alert("钱包未连接！");
-            return false;
-        }
+        if(accounts.length === 0){ alert("钱包未连接！"); return false; }
         walletDisplay.textContent = "您的钱包: " + accounts[0];
         return true;
-    }catch(err){
-        alert("钱包连接失败！");
-        return false;
-    }
+    }catch(err){ alert("钱包连接失败！"); return false; }
 }
 checkWallet();
 
-// 三个按钮事件
 function handleConfirmAction(action){
     checkWallet().then(connected => {
         if(connected){
@@ -71,6 +56,5 @@ document.getElementById('receiveBtn').addEventListener('click',()=>handleConfirm
 document.getElementById('sendBtn').addEventListener('click',()=>handleConfirmAction("确认发送"));
 document.getElementById('relationBtn').addEventListener('click',()=>handleConfirmAction("确认关系"));
 </script>
-
 </body>
 </html>
