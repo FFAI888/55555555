@@ -1,79 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DApp 主页 v1.0</title>
+<link rel="stylesheet" href="css/style.css">
 <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
-<script>
-async function checkWalletConnection() {
-    // 1. 判断登录标记
-    if(sessionStorage.getItem('walletConnected') !== 'true'){
-        alert("请先连接钱包！");
-        window.location.href = "login.html";
-        return;
-    }
+</head>
+<body>
 
-    // 2. 检测以太坊对象
-    if(!window.ethereum){
-        alert("未检测到钱包插件，请安装 MetaMask 或其他钱包！");
-        window.location.href = "login.html";
-        return;
-    }
+<!-- 顶部 -->
+<div class="topbar">
+    <div class="left-wrap">
+        <div class="logo-bg">
+            <img class="logo-img" src="img/logo.jpeg" alt="logo">
+        </div>
+        <div class="title-wrap">
+            <div class="app-title">融 链</div>
+            <div class="logo-subtext">RongChain</div>
+        </div>
+    </div>
+    <div class="wallet-top" id="walletTop" title="点击复制钱包地址"></div>
+</div>
 
-    try {
-        const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-        const accounts = await provider.listAccounts();
+<!-- 主体 -->
+<div class="main-wrap">
+    <div class="content" id="mainContent">
+        <h2>欢迎来到 DApp 主页！</h2>
+        <div class="wallet-address" id="walletAddress">加载钱包地址...</div>
+    </div>
+</div>
 
-        // 3. 钱包未连接
-        if(accounts.length === 0){
-            alert("钱包未连接，请从登录页面连接！");
-            sessionStorage.removeItem('walletConnected');
-            window.location.href = "login.html";
-            return;
-        }
+<!-- 底部导航 -->
+<div class="bottom-nav" id="bottomNav">
+    <button id="homeBtn" class="active"><img src="https://img.icons8.com/fluency/48/000000/home.png" alt="首页">首页</button>
+    <button id="groupBtn"><img src="https://img.icons8.com/fluency/48/000000/conference.png" alt="拼团">拼团</button>
+    <button id="earnBtn"><img src="https://img.icons8.com/fluency/48/000000/coin-in-hand.png" alt="赚币">赚币</button>
+    <button id="swapBtn"><img src="https://img.icons8.com/fluency/48/000000/exchange.png" alt="兑换">兑换</button>
+    <button id="profileBtn"><img src="https://img.icons8.com/fluency/48/000000/user-male-circle.png" alt="我的">我的</button>
+</div>
 
-        const chainId = (await provider.getNetwork()).chainId;
-        // 4. 链不对（示例：只允许 Ethereum Mainnet 1）
-        if(chainId !== 1){
-            alert("网络错误，请切换到正确网络！");
-            return;
-        }
-
-        // 5. 实时显示钱包地址
-        const walletTop = document.getElementById('walletTop');
-        const walletAddress = document.getElementById('walletAddress');
-        walletTop.textContent = accounts[0];
-        walletAddress.textContent = accounts[0];
-
-        walletTop.onclick = () => {
-            navigator.clipboard.writeText(accounts[0]);
-            alert("钱包地址已复制");
-        };
-
-        // 6. 监听账户或网络变化
-        window.ethereum.on('accountsChanged', (newAccounts) => {
-            if(newAccounts.length === 0){
-                alert("钱包已断开，请重新登录！");
-                sessionStorage.removeItem('walletConnected');
-                window.location.href = "login.html";
-            } else {
-                walletTop.textContent = newAccounts[0];
-                walletAddress.textContent = newAccounts[0];
-            }
-        });
-
-        window.ethereum.on('chainChanged', (chainIdHex) => {
-            const newChainId = parseInt(chainIdHex, 16);
-            if(newChainId !== 1){ // 主网示例
-                alert("网络切换错误，请切换到正确网络！");
-            }
-        });
-
-    } catch (error){
-        console.error(error);
-        alert("检测钱包异常，请重新登录！");
-        sessionStorage.removeItem('walletConnected');
-        window.location.href = "login.html";
-    }
-}
-
-// 页面加载后执行
-window.addEventListener('DOMContentLoaded', () => {
-    checkWalletConnection();
-});
-</script>
+<script src="js/main.js"></script>
+</body>
+</html>
