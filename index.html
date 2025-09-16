@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<script>
+if(sessionStorage.getItem('walletConnected') !== 'true'){
+    // 未登录跳回登录页
+    window.location.href = "login.html";
+}
+</script>
+
 <!-- 顶部 -->
 <div class="topbar">
     <div class="left-wrap">
