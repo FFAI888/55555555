@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>连接钱包登录</title>
 <link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 </head>
 <body>
 
@@ -16,6 +17,18 @@
 </div>
 
 <script>
+// 自动读取 URL 参数获取邀请人钱包地址
+function getQueryParam(name){
+    const params = new URLSearchParams(window.location.search);
+    return params.get(name);
+}
+const inviterInput = document.getElementById('inviter');
+const referrer = getQueryParam('referrer');
+if(referrer){
+    inviterInput.value = "邀请人: " + referrer;
+}
+
+// 连接钱包按钮逻辑
 const connectBtn = document.getElementById('connectWalletBtn');
 connectBtn.addEventListener('click', async () => {
     if(!window.ethereum){
@@ -23,11 +36,18 @@ connectBtn.addEventListener('click', async () => {
         return;
     }
     try{
-        await window.ethereum.request({ method: 'eth_requestAccounts' });
-        sessionStorage.setItem('walletConnected', 'true'); // 登录标记
-        alert("钱包已连接！");
-        window.location.href = "index.html"; // 跳转主页
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        if(accounts.length === 0){
+            alert("钱包连接失败，请重试！");
+            return;
+        }
+        // 设置登录标记
+        sessionStorage.setItem('walletConnected', 'true');
+        // 跳转确认关系页面，同时传递邀请人参数
+        const url = "confirm.html" + (referrer ? "?referrer="+referrer : "");
+        window.location.href = url;
     }catch(err){
+        console.error(err);
         alert("钱包连接失败，请重试！");
     }
 });
